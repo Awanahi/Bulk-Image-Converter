@@ -1,5 +1,26 @@
 import { create } from 'zustand';
 
+export interface EditSettings {
+  brightness: number;
+  contrast: number;
+  saturation: number;
+  vibrance: number;
+  hue: number;
+  opacity: number;
+  compression: number;
+  quality: number;
+  format: 'original' | 'jpeg' | 'png' | 'webp' | 'gif' | 'bmp' | 'tiff' | 'avif';
+  watermark: {
+    enabled: boolean;
+    type: 'text' | 'image';
+    text: string;
+    image: string | null;
+    position: 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right' | 'center';
+    size: number;
+    opacity: number;
+  };
+}
+
 interface ImageData {
   id: string;
   file: File;

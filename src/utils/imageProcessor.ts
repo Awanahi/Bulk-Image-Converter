@@ -66,8 +66,7 @@ const applyFilters = (
 // Add watermark to the image
 const addWatermark = async (
   canvas: HTMLCanvasElement,
-  watermarkSettings: EditSettings['watermark'],
-  watermarkImage: File | null
+  watermarkSettings: EditSettings['watermark']
 ): Promise<HTMLCanvasElement> => {
   if (!watermarkSettings.enabled) {
     return canvas;
@@ -179,8 +178,7 @@ const addWatermark = async (
 // Main function to apply all edits to an image
 export const applyImageEdits = async (
   file: File,
-  settings: EditSettings,
-  watermarkImage: File | null
+  settings: EditSettings
 ): Promise<string> => {
   try {
     // Compress the image if needed
@@ -223,7 +221,7 @@ export const applyImageEdits = async (
     const filteredCanvas = applyFilters(canvas, settings);
     
     // Add watermark if enabled
-    const finalCanvas = await addWatermark(filteredCanvas, settings.watermark, watermarkImage);
+    const finalCanvas = await addWatermark(filteredCanvas, settings.watermark);
     
     // Convert to the desired format
     let mimeType = 'image/jpeg';
